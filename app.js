@@ -5,6 +5,15 @@ function sortear(){
     let ate = parseInt(document.getElementById("ate").value);
     let sorteados =[];
     let numero;
+
+    
+    if(de>=ate){
+        alert('Campo "Do número" deve ser inferior ao campo "Até o número". Verifique!');
+    return;
+  }
+    if(quantidade <= (ate - de + 1)){
+
+    
     for(let i = 0;i < quantidade; i++){
       numero = obterNumeroAleatorio(de,ate);
      
@@ -13,10 +22,15 @@ function sortear(){
     
      }
         sorteados.push(numero);
- }    
+ }  
+  }  
+  else{
+        alert("A quantidade de números não pode ser maior que o intervalo possível. Verifique!");
+  }
      let resposta = document.getElementById("resultado");
      resposta.innerHTML = `<label class="texto__paragrafo">Números sorteados: ${sorteados}</label>`;
- }
+
+   }
 
  function obterNumeroAleatorio(min,max){
  return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -39,3 +53,4 @@ function reiniciar(){
         document.getElementById('resultado').innerHTML = '<label class="texto__paragrafo">Números sorteados: nenhum até agora</label>';
         alterarStatusBotao();
 }
+
